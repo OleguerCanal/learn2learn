@@ -137,7 +137,7 @@ def main(
 
     env = l2l.gym.AsyncVectorEnv([make_env for _ in range(num_workers)])
     env.seed(seed)
-    env.set_task(env.sample_tasks(1)[0])
+    env.set_task(env.sample_tasks(1)[0])  # Not sure about this
     env = ch.envs.Torch(env)
     policy = DiagNormalPolicy(env.state_size, env.action_size, device=device)
     if cuda:
@@ -149,6 +149,7 @@ def main(
         iteration_replays = []
         iteration_policies = []
 
+        # Collect some trajectories from the environment for different tasks
         for task_config in tqdm(env.sample_tasks(meta_bsz), leave=False, desc='Data'):  # Samples a new config
             clone = deepcopy(policy)
             env.set_task(task_config)
