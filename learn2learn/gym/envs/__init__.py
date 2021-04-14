@@ -8,6 +8,12 @@ from .subproc_vec_env import SubprocVecEnv
 # ----------------------------------------
 
 register(
+    'Collector2D-v0',
+    entry_point='learn2learn.gym.envs.particles.collector_2d:Collector2DEnv',
+    max_episode_steps=100
+)
+
+register(
     'Particles2D-v1',
     entry_point='learn2learn.gym.envs.particles.particles_2d:Particles2DEnv',
     max_episode_steps=100
