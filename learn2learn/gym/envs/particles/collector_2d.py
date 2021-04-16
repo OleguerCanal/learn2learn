@@ -56,6 +56,7 @@ class Collector2DEnv(MetaEnv):
     """
 
     def __init__(self, max_steps=500, size=200, task=None):
+        print("Starting Collector2DEnv")
         self.seed()
         super(Collector2DEnv, self).__init__(task)
         self.max_steps = max_steps
